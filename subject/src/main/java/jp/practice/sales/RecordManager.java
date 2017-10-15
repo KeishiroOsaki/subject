@@ -61,7 +61,7 @@ public final class RecordManager {
     public static Item getItemOf(String name) {
 
 		//俺という存在が、forで回そうとした遺志を引き継ぐのだ
-		Item gotItem;
+		Item gotItem = null;
 		try{
 
 			for (Item item : list) {
@@ -77,7 +77,7 @@ public final class RecordManager {
 		} catch (Exception e) {
 			return new Item(null, null, 0, 0, 0);
 		}
-		return new Item(gotItem.getId(), gotItem.getName(), gotItem.getPrice(), 0, 0);
+		//return new Item(gotItem.getId(), gotItem.getName(), gotItem.getPrice(), 0, 0);
 		/*Item gotItem;
 		for(int i = 0; i <= list.size(); i++){
 			list.getName().equals(name).findFirst().get();
