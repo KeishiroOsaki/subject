@@ -7,9 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Handles requests for the application home page.
@@ -45,8 +43,8 @@ public class SalesSystemController {
 		return INIT;
 	}
 
-	@RequestMapping(params = "/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute SalesForm form, Model model) {
+	@RequestMapping(params = "add")
+	public String add(SalesForm form, Model model) {
 		// List<String> meisaiList = RecordManager.setItemList();
 		/*
 		 * model.addAttribute("name",form.getName()); //商品名
@@ -80,11 +78,6 @@ public class SalesSystemController {
 		return ADD;
 	}
 
-	/*
-	 * private void If(boolean b) { // TODO 自動生成されたメソッド・スタブ
-	 *
-	 * }
-	 */
 
 	/*
 	 * @RequestMapping(params = "/list") public String list(Model model){
@@ -98,12 +91,12 @@ public class SalesSystemController {
 	 * model.addAttribute("e_message",ADD_ERROR_MSG); return ADD; }
 	 */
 
-	@RequestMapping(params = "/fix", method = RequestMethod.POST)
+	@RequestMapping(params = "fix")
 	public String fix(Model model) {
 		return FIX;
 	}
 
-	@RequestMapping(params = "/delete", method = RequestMethod.POST)
+	@RequestMapping(params = "delete")
 	public String delete(Model model) {
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
