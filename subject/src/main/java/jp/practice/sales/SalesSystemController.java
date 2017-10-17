@@ -1,5 +1,6 @@
 package jp.practice.sales;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -40,7 +41,9 @@ public class SalesSystemController {
 	public String init(SalesForm form, Model model) {
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
-		session.setAttribute("recordList",list);
+
+		List<Item> recordList = new ArrayList<Item>();
+		session.setAttribute("recordList",recordList);
 		return INIT;
 	}
 
