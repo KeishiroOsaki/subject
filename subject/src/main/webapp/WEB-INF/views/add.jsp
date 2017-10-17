@@ -30,9 +30,9 @@
 	int num = 0;
 	snum = request.getParameter("quantity");
 	num = Integer.parseInt(snum);
+
 %>
 
-<form:form modelAttribute="salesForm" action="/sales/system">
 <%--    <div>
         <span class="itemName">商品：</span>
         <form:select path="name" items="${ItemList}"/>
@@ -54,6 +54,25 @@
 <span style="color:red;">
 <c:out value="${e_msg}" />
 </span>
+
+
+<form:form modelAttribute="salesForm" action="/sales/system">
+		<div>
+			<span class="itemName">商品：</span>
+				<form:select path = "name" items="${ItemList}"/>
+		</div>
+		<div>
+			<span class="amount">点数：</span>
+				<form:input path = "quantity" size="31" />
+		</div>
+		<div>
+			<input type="submit" name="add" value="明細追加" />
+		</div>
+</form:form>
+
+
+
+
 
 売上明細
 <table border = "1">
@@ -79,7 +98,7 @@
 </tr>
 </table>
 
-
+<form:form>
 <input type="submit" name="delete" value="削除" />
 <input type="submit" name="fix" value="確定" />
 </form:form>
