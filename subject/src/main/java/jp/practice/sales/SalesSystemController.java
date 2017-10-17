@@ -110,16 +110,14 @@ public class SalesSystemController {
 		return DELETE;
 	}
 
-	/*
-	 * @RequestMapping(params = "/init") public String syuryo(SalesForm
-	 * form,Model model){ List<String> list = RecordManager.getItemListStr();
-	 * model.addAttribute("ItemList",list);
-	 *
-	 * //空のレコードリストをセッションに格納 List<Item> recordList = new ArrayList<Item>();
-	 * session.setAttribute("recordList",recordList);
-	 *
-	 *
-	 * return INIT; }
-	 */
+
+	@RequestMapping(params = "end")
+	public String end (SalesForm form, Model model) {
+		List<String> list = RecordManager.getItemListStr();
+		model.addAttribute("ItemList", list);
+		session.setAttribute("recordList",list);
+		return INIT;
+	}
+
 
 }
