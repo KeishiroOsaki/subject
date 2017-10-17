@@ -40,6 +40,7 @@ public class SalesSystemController {
 	public String init(SalesForm form, Model model) {
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
+		session.setAttribute("recordList",list);
 		return INIT;
 	}
 
