@@ -21,7 +21,6 @@
    		SimpleDateFormat sdf = new SimpleDateFormat();
    		sdf.applyPattern("MM月dd日(E)");
    		System.out.println(sdf.format(calendar.getTime()));
-
    		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
    		%>
    	<%= sdf.format(calendar.getTime()) %>
@@ -35,7 +34,6 @@
 	int num = 0;
 	snum = request.getParameter("quantity");
 	num = Integer.parseInt(snum);
-
 %>
 
 <%--    <div>
