@@ -24,7 +24,7 @@
 
 
 
-<form:form modelAttribute="salesForm" action="/sales/system">
+<form:form modelAttribute="salesForm" action="/sales/system/" method="post">
 		<div>
 			<span class="itemName">商品：</span>
 <%--			<form:form modelAttribute=salesForm" action="/start">  --%>
