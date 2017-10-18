@@ -42,6 +42,7 @@
 	LocalDateTime to = LocalDateTime.now();
 	Duration duration = Duration.between(from,to);
 	long uriage_id = duration.toMillis();
+
 %>
 売上ID = <%= uriage_id %>
 <br><br><br>
@@ -60,6 +61,7 @@
 
 <%-- けす
 <td><c:out value="num" /></td>
+
 <td><c:out value="${i.getName()}" /></td>
 <td><c:out value="${i.getPrice()}" /></td>
 <td><c:out value="${i.getQuantity()}" /></td>
@@ -69,8 +71,7 @@
 </table>
 
 
-<input type="submit" name="delete" value="削除" />
-<input type="submit" name="fix" value="確定" />
+<input type="submit" name="end" value="終了" />
 </form:form>
 </body>
 </html>

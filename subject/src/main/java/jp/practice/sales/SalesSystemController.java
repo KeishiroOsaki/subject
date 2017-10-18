@@ -1,5 +1,6 @@
 package jp.practice.sales;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -40,10 +41,13 @@ public class SalesSystemController {
 	public String init(SalesForm form, Model model) {
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
+
+		List<Item> recordList = new ArrayList<Item>();
+		session.setAttribute("recordList",recordList);
 		return INIT;
 	}
 
-	@RequestMapping(params = "/add")
+	@RequestMapping(params = "add")
 	public String add(SalesForm form, Model model) {
 		// List<String> meisaiList = RecordManager.setItemList();
 		/*
@@ -53,6 +57,15 @@ public class SalesSystemController {
 
 		/* List<String> recordList = new ArrayList<String>(); */
 		// recordList.add(form.getName(),form.getQuantity());
+
+
+		//add画面でもフォームは必要20171017
+		List<String> list = RecordManager.getItemListStr();
+		model.addAttribute("ItemList", list);
+		session.setAttribute("recordList",list);
+
+
+
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
@@ -78,11 +91,6 @@ public class SalesSystemController {
 		return ADD;
 	}
 
-	/*
-	 * private void If(boolean b) { // TODO 自動生成されたメソッド・スタブ
-	 *
-	 * }
-	 */
 
 	/*
 	 * @RequestMapping(params = "/list") public String list(Model model){
@@ -96,12 +104,12 @@ public class SalesSystemController {
 	 * model.addAttribute("e_message",ADD_ERROR_MSG); return ADD; }
 	 */
 
-	@RequestMapping(params = "/fix")
+	@RequestMapping(params = "fix")
 	public String fix(Model model) {
 		return FIX;
 	}
 
-	@RequestMapping(params = "/delete")
+	@RequestMapping(params = "delete")
 	public String delete(Model model) {
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
@@ -114,16 +122,14 @@ public class SalesSystemController {
 		return DELETE;
 	}
 
-	/*
-	 * @RequestMapping(params = "/init") public String syuryo(SalesForm
-	 * form,Model model){ List<String> list = RecordManager.getItemListStr();
-	 * model.addAttribute("ItemList",list);
-	 *
-	 * //空のレコードリストをセッションに格納 List<Item> recordList = new ArrayList<Item>();
-	 * session.setAttribute("recordList",recordList);
-	 *
-	 *
-	 * return INIT; }
-	 */
+
+	@RequestMapping(params = "end")
+	public String end (SalesForm form, Model model) {
+		List<String> list = RecordManager.getItemListStr();
+		model.addAttribute("ItemList", list);
+		session.setAttribute("recordList",list);
+		return INIT;
+	}
+
 
 }

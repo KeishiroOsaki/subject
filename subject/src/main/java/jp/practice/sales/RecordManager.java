@@ -60,24 +60,22 @@ public final class RecordManager {
     /** 指定された名前の商品のインスタンスを新規に生成 */ //例外ハンドリングつけた20171005
     public static Item getItemOf(String name) {
 
-		//俺という存在が、forで回そうとした遺志を引き継ぐのだ
-		Item gotItem;
+		Item gotItem = null;
 		try{
-
 			for (Item item : list) {
 				if (item.getName().equals(name)) {
 					gotItem = item;
-					break;
+					//break;
 				}
 			}
 			if (gotItem == null) {
 				gotItem = new Item(null, null, 0, 0, 0);
 			}
 			return new Item(gotItem.getId(), gotItem.getName(), gotItem.getPrice(), 0, 0);
-		} catch (Exception e) {
+		} catch (NullPointerException ne) {
 			return new Item(null, null, 0, 0, 0);
 		}
-		return new Item(gotItem.getId(), gotItem.getName(), gotItem.getPrice(), 0, 0);
+		//return new Item(gotItem.getId(), gotItem.getName(), gotItem.getPrice(), 0, 0);
 		/*Item gotItem;
 		for(int i = 0; i <= list.size(); i++){
 			list.getName().equals(name).findFirst().get();
