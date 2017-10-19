@@ -58,14 +58,10 @@ public class SalesSystemController {
 		/* List<String> recordList = new ArrayList<String>(); */
 		// recordList.add(form.getName(),form.getQuantity());
 
-
 		//add画面でもフォームは必要20171017
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
 		session.setAttribute("recordList",list);
-
-
-
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
@@ -122,7 +118,6 @@ public class SalesSystemController {
 		return DELETE;
 	}
 
-
 	@RequestMapping(params = "end")
 	public String end (SalesForm form, Model model) {
 		List<String> list = RecordManager.getItemListStr();
@@ -130,6 +125,4 @@ public class SalesSystemController {
 		session.setAttribute("recordList",list);
 		return INIT;
 	}
-
-
 }
