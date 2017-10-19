@@ -42,7 +42,6 @@
 	LocalDateTime to = LocalDateTime.now();
 	Duration duration = Duration.between(from,to);
 	long uriage_id = duration.toMillis();
-
 %>
 売上ID = <%= uriage_id %>
 <br><br><br>
