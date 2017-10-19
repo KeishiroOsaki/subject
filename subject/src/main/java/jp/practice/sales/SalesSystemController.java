@@ -61,7 +61,7 @@ public class SalesSystemController {
 		//add画面でもフォームは必要20171017
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
-		session.setAttribute("recordList",list);
+		//session.setAttribute("recordList",list);
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
