@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.practice.sales.RecordManager;
+
 /**
  * Handles requests for the application home page.
  */
@@ -61,7 +63,6 @@ public class SalesSystemController {
 		//add画面でもフォームは必要20171017
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
-		session.setAttribute("recordList",list);
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
