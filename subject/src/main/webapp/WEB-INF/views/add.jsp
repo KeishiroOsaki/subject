@@ -36,6 +36,7 @@
 	num = Integer.parseInt(snum);
 %>
 
+<form:form modelAttribute="salesForm" action="/sales/system">
 <%--    <div>
         <span class="itemName">商品：</span>
         <form:select path="name" items="${ItemList}"/>
@@ -74,9 +75,6 @@
 </form:form>
 
 
-
-
-
 売上明細
 <table border = "1">
 <tr><th>削除</th><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
@@ -101,7 +99,7 @@
 
 </table>
 
-<form:form>
+
 <input type="submit" name="delete" value="削除" />
 <input type="submit" name="fix" value="確定" />
 </form:form>
