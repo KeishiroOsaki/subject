@@ -123,6 +123,6 @@ public class SalesSystemController {
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
 		session.setAttribute("recordList",list);
-		return INIT;
+		return INIT;あ
 	}
 }
