@@ -107,16 +107,28 @@ public class SalesSystemController {
 	}
 
 	@RequestMapping(params = "delete")
-	public String delete(Model model) {
+	public String delete(SalesDeleteForm form, Model model) {
+
+		List<String> list = RecordManager.getItemListStr();
+		model.addAttribute("ItemList", list);
+
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
+
+		//削除ターゲットに削除フラグを立てる
+		int delRow = Integer.parseInt(form.getDelRow());
+		recordList.get(delRow).setRemoveFlg(true);
 
 		RecordManager.deleteItem(recordList);
 
 		// レコードリストをセッションに格納
 		session.setAttribute("recordList", recordList);
 
-		return DELETE;
+		if (recordList.size() >= 1) {
+			return ADD;
+		} else {
+			return INIT;
+		}
 	}
 
 	@RequestMapping(params = "end")
