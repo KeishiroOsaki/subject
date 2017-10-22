@@ -76,12 +76,13 @@
 
 
 売上明細
+<form:form modelAttribute="salesDeleteForm" action="/sales/system">
 <table border = "1">
 <tr><th>削除</th><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
 
-<c:forEach items="${recordList}" var="record">
+<c:forEach items="${recordList}" var="record" varStatus="sts">
 <tr>
-<td><%-- <form:radiobutton >--%></td>
+<td><form:radiobutton path="delRow" value="${sts.index}" /> </td>
 <td><c:out value="${record.id}" /></td>
 <td><c:out value="${record.name}" /></td>
 <td><c:out value="${record.price}" /></td>
