@@ -108,7 +108,7 @@ public class SalesSystemController {
 	}
 
 	@RequestMapping(params = "delete")
-	public String delete(SalesDeleteForm form, Model model) {
+	public String delete(SalesForm form, Model model) {
 
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);

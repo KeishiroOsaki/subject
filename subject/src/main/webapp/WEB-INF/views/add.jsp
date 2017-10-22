@@ -72,11 +72,11 @@
 		<div>
 			<input type="submit" name="add" value="明細追加" />
 		</div>
-</form:form>
+<%-- </form:form> --%>
 
 
 売上明細
-<form:form modelAttribute="salesDeleteForm" action="/sales/system">
+<%-- <form:form modelAttribute="salesDeleteForm" action="/sales/system"> --%>
 <table border = "1">
 <tr><th>削除</th><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
 
