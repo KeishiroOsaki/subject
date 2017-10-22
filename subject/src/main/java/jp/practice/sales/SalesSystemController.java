@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.practice.sales.RecordManager;
+
 /**
  * Handles requests for the application home page.
  */
@@ -61,7 +63,7 @@ public class SalesSystemController {
 		//add画面でもフォームは必要20171017
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
-		session.setAttribute("recordList",list);
+
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
@@ -106,16 +108,28 @@ public class SalesSystemController {
 	}
 
 	@RequestMapping(params = "delete")
-	public String delete(Model model) {
+	public String delete(SalesForm form, Model model) {
+
+		List<String> list = RecordManager.getItemListStr();
+		model.addAttribute("ItemList", list);
+
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
+
+		//削除ターゲットに削除フラグを立てる
+		int delRow = Integer.parseInt(form.getDelRow());
+		recordList.get(delRow).setRemoveFlg(true);
 
 		RecordManager.deleteItem(recordList);
 
 		// レコードリストをセッションに格納
 		session.setAttribute("recordList", recordList);
 
-		return DELETE;
+		if (recordList.size() >= 1) {
+			return ADD;
+		} else {
+			return INIT;
+		}
 	}
 
 	@RequestMapping(params = "end")

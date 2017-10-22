@@ -36,7 +36,7 @@
 	num = Integer.parseInt(snum);
 %>
 
-<form:form modelAttribute="salesForm" action="/sales/system">
+
 <%--    <div>
         <span class="itemName">商品：</span>
         <form:select path="name" items="${ItemList}"/>
@@ -72,16 +72,17 @@
 		<div>
 			<input type="submit" name="add" value="明細追加" />
 		</div>
-</form:form>
+<%-- </form:form> --%>
 
 
 売上明細
+<%-- <form:form modelAttribute="salesDeleteForm" action="/sales/system"> --%>
 <table border = "1">
 <tr><th>削除</th><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
 
-<c:forEach items="${recordList}" var="record">
+<c:forEach items="${recordList}" var="record" varStatus="sts">
 <tr>
-<td><%-- <form:radiobutton >--%></td>
+<td><form:radiobutton path="delRow" value="${sts.index}" /> </td>
 <td><c:out value="${record.id}" /></td>
 <td><c:out value="${record.name}" /></td>
 <td><c:out value="${record.price}" /></td>
@@ -99,7 +100,7 @@
 
 </table>
 
-
+<%-- <form:form modelAttribute="salesForm" action="/sales/system"> --%>
 <input type="submit" name="delete" value="削除" />
 <input type="submit" name="fix" value="確定" />
 </form:form>

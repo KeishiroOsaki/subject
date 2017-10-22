@@ -24,16 +24,14 @@
 
 
 
-<form:form modelAttribute="salesForm" action="/sales/system/" method="post">
+<form:form modelAttribute="salesForm" action="/sales/system">
 		<div>
 			<span class="itemName">商品：</span>
-<%--			<form:form modelAttribute=salesForm" action="/start">  --%>
 				<form:select path = "name" items="${ItemList}"/>
 		</div>
 		<div>
 			<span class="amount">点数：</span>
-<%--			<form:form modelAttribute="salesForm" action="/start">  --%>
-			<form:input path="quantity" size="31" />
+				<form:input path="quantity" size="31" />
 		</div>
 		<div>
 			<input type="submit" name="add" value="明細追加" />
