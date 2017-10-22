@@ -64,6 +64,7 @@ public class SalesSystemController {
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
 
+
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
 

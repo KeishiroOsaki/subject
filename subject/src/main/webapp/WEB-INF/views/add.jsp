@@ -100,7 +100,7 @@
 
 </table>
 
-
+<form:form modelAttribute="salesForm" action="/sales/system">
 <input type="submit" name="delete" value="削除" />
 <input type="submit" name="fix" value="確定" />
 </form:form>
