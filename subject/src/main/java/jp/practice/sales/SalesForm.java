@@ -7,6 +7,11 @@ public class SalesForm {
     /** 個数 */
     private int quantity;
 
+
+	/** 削除対象行 */
+	private String delRow;
+
+
 	public SalesForm() {
 
 
@@ -38,6 +43,21 @@ public class SalesForm {
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+
+	/**
+	 * @return delRow
+	 */
+	public String getDelRow() {
+		return delRow;
+	}
+
+	/**
+	 * @param delRow セットする delRow
+	 */
+	public void setDelRow(String delRow) {
+		this.delRow = delRow;
 	}
 
 }
