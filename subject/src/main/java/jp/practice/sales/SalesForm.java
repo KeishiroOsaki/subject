@@ -1,10 +1,14 @@
 package jp.practice.sales;
 
+
+import javax.validation.constraints.Pattern;
+
 public class SalesForm {
 
 	/** 商品名 */
     private String name;
     /** 個数 */
+    @Pattern(regexp = "^\\d+$", message = "点数には1以上の数字を入力してください")
     private int quantity;
 
 
