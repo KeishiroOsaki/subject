@@ -1,18 +1,27 @@
 package jp.practice.sales;
 
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class SalesForm {
 
 	/** 商品名 */
     private String name;
+
     /** 個数 */
-    @Pattern(regexp = "^\\d+$", message = "点数には1以上の数字を入力してください")
-    private int quantity;
+    @NotNull
+    //@Pattern(regexp = "^\\d+$", message = "点数には1以上の数字を入力してください")
+    @Min(1)
+    private Integer quantity;
 
 
 	/** 削除対象行 */
+    @NotNull
 	private String delRow;
 
 
@@ -38,14 +47,14 @@ public class SalesForm {
 	/**
 	 * @return quantity
 	 */
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
 	/**
 	 * @param quantity セットする quantity
 	 */
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 

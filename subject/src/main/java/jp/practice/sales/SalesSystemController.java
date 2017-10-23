@@ -59,9 +59,9 @@ public class SalesSystemController {
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
-		if(result.hasErrors() && recordList.size() > 0){
+		if(result.hasFieldErrors("quantity") && recordList.size() > 0){
 			return ADD;
-		}else if(result.hasErrors() && recordList.size() == 0){
+		}else if(result.hasFieldErrors("quantity") && recordList.size() == 0){
 			return INIT;
 		}
 
@@ -108,7 +108,7 @@ public class SalesSystemController {
 	}
 
 	@RequestMapping(params = "delete")
-	public String delete(SalesForm form, Model model) {
+	public String delete(SalesForm form, BindingResult result, Model model) {
 
 		List<String> list = RecordManager.getItemListStr();
 		model.addAttribute("ItemList", list);
@@ -116,19 +116,24 @@ public class SalesSystemController {
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
 
-		//削除ターゲットに削除フラグを立てる
-		int delRow = Integer.parseInt(form.getDelRow());
-		recordList.get(delRow).setRemoveFlg(true);
+		if (result.hasFieldErrors("delRow") == false) {
 
-		RecordManager.deleteItem(recordList);
+			//削除ターゲットに削除フラグを立てる
+			int delRow = Integer.parseInt(form.getDelRow());
+			recordList.get(delRow).setRemoveFlg(true);
 
-		// レコードリストをセッションに格納
-		session.setAttribute("recordList", recordList);
+			RecordManager.deleteItem(recordList);
 
-		if (recordList.size() >= 1) {
-			return ADD;
+			// レコードリストをセッションに格納
+			session.setAttribute("recordList", recordList);
+
+			if (recordList.size() >= 1) {
+				return ADD;
+			} else {
+				return INIT;
+			}
 		} else {
-			return INIT;
+			return ADD;
 		}
 	}
 

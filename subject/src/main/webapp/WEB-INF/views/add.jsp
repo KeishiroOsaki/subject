@@ -74,6 +74,7 @@
 		</div>
 <%-- </form:form> --%>
 
+<form:errors path="quantity" />
 
 売上明細
 <%-- <form:form modelAttribute="salesDeleteForm" action="/sales/system"> --%>
