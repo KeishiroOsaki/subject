@@ -53,10 +53,13 @@
 
 
 売上明細<br>
+<form:form modelAttribute="salesForm" action="/sales/system">
 <table border = "1">
 <tr><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
 
+
 <c:forEach items="${recordList}" var="record">
+
 <tr>
 <td><c:out value="${record.id}" /></td>
 <td><c:out value="${record.name}" /></td>
@@ -64,8 +67,11 @@
 <td><c:out value="${record.quantity}" /></td>
 <td><c:out value="${record.subtotal}" /></td>
 </tr>
+
+
 </c:forEach>
 </table>
+
 
 
 <input type="submit" name="end" value="終了" />
