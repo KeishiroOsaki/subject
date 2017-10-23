@@ -37,5 +37,8 @@
 			<input type="submit" name="add" value="明細追加" />
 		</div>
 </form:form>
+<c:out value="${message}" />
+<form:errors path="quantity" />
+
 </body>
 </html>
