@@ -104,6 +104,9 @@ public class SalesSystemController {
 
 	@RequestMapping(params = "fix")
 	public String fix(Model model) {
+
+
+
 		return FIX;
 	}
 
