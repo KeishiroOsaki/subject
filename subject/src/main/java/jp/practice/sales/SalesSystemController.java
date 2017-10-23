@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import jp.practice.sales.RecordManager;
 
 /**
  * Handles requests for the application home page.
@@ -50,15 +50,7 @@ public class SalesSystemController {
 	}
 
 	@RequestMapping(params = "add")
-	public String add(SalesForm form, Model model) {
-		// List<String> meisaiList = RecordManager.setItemList();
-		/*
-		 * model.addAttribute("name",form.getName()); //商品名
-		 * model.addAttribute("quantity",form.getQuantity());//個数
-		 */
-
-		/* List<String> recordList = new ArrayList<String>(); */
-		// recordList.add(form.getName(),form.getQuantity());
+	public String add(@Valid SalesForm form,BindingResult result, Model model) {
 
 		//add画面でもフォームは必要20171017
 		List<String> list = RecordManager.getItemListStr();
@@ -67,6 +59,11 @@ public class SalesSystemController {
 
 		// セッションからレコードリストを取り出し
 		List<Item> recordList = (List<Item>) session.getAttribute("recordList");
+		if(result.hasErrors() && recordList.size() > 0){
+			return ADD;
+		}else if(result.hasErrors() && recordList.size() == 0){
+			return INIT;
+		}
 
 		// Itemを格納
 		Item tmpItem = RecordManager.getItemOf(form.getName());
