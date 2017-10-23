@@ -48,26 +48,22 @@
 
 
 売上明細<br>
+<form:form modelAttribute="salesForm" action="/sales/system">
 <table border = "1">
-<tr><th>削除</th><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
+<tr><th>商品ID</th><th>商品名</th><th>単価</th><th>点数</th><th>小計</th></tr>
 
-
-
-<%--けす<c:forEach var="i" items="${recordList}">
+<c:forEach items="${recordList}" var="record" varStatus="sts">
 <tr>
-<%-- ラジオボタン<td><form:radiobutton ></td>
-いったんけす<td><c:out value="${i.getId()}" /></td> --%>
-
-<%-- けす
-<td><c:out value="num" /></td>
-
-<td><c:out value="${i.getName()}" /></td>
-<td><c:out value="${i.getPrice()}" /></td>
-<td><c:out value="${i.getQuantity()}" /></td>
-<td><c:out value="${i.getSubtotal()}" /></td>
+<td><c:out value="${record.id}" /></td>
+<td><c:out value="${record.name}" /></td>
+<td><c:out value="${record.price}" /></td>
+<td><c:out value="${record.quantity}" /></td>
+<td><c:out value="${record.subtotal}" /></td>
 </tr>
-</c:forEach> --%>
+
+</c:forEach>
 </table>
+
 
 
 <input type="submit" name="end" value="終了" />
